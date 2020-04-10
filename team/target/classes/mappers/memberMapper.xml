@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="member">
+    
+    <!-- 회원가입 -->
+    <insert id="join">
+     insert into user_info (uno,userid,passwd,name,birth,gender,email1,email2,email_confirm,hp,postcode,road_addr,detail_addr)
+     values(user_info_seq.nextval,#{userid},#{passwd},#{name},#{birth},#{gender},#{email1},#{email2},#{email_confirm},#{hp},#{postcode},#{road_addr},#{detail_addr});
+    </insert>
+    
+    <!-- 아이디 중복 체크 -->
+    <select id="userid_check" resultType="int">
+     select count(*) from user_info where userid=#{userid}
+    </select>
+    
+    
+    <!-- 로그인 -->
+	<select id="login"
+		parameterType="com.example.team.model.member.dto.MemberDTO"
+		resultType="String">
+		select name from user_info
+		where userid=#{userid} and 
+		passwd=#{passwd}
+	</select>
+	<!--사용자 정보 (내 정보) -->
+	<select id="userInfoMember" resultType="com.example.team.model.member.dto.MemberDTO">
+		select * from user_info
+		where
+		userid=#{userid} or uno=#{uno}
+	</select>
+	<!-- 계좌번호 등록 -->
+	<update id="ac_sign">
+	 update user_info set ac_number=#{ac_number} where uno=#{uno}
+	</update>
+	
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="item_step">
+	<!--리워드 금액 종류 옵션  -->
+	<select id="price_unit" resultType="com.example.team.model.reward_info.dto.Item_stepDTO">
+	 select * from item_step where rno=#{rno} order by r_id
+	</select>
+	
+	<!-- 리워드 아이템 정보 -->
+	<select id="item_infoDetail" resultType="com.example.team.model.reward_info.dto.Item_stepDTO">
+	 select * from item_step where r_id=#{r_id}
+	</select>
+	
+	<!--남은 수량 갱신 -->
+	<update id="amount">
+	 update item_step set rest_amount=(rest_amount-#{item_amount}) where r_id=#{r_id}
+	</update>
+	
+	<!--  -->
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
