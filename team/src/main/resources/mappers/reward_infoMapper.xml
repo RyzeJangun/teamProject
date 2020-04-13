@@ -46,9 +46,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--리워드 투자 정보 추가 -->
 	<insert id="pay">
 		insert into user_reward
-		(rno,uno,userid,name,r_id,item_name,price_unit,item_option,delivery_fee,delivery_date,item_amount,total_reward,total_money,delivery_postcode},delivery_road,delivery_detail)
+		(rno,userid,r_id,item_name,price_unit,item_option,delivery_fee,delivery_date,item_amount,total_reward,total_money,delivery_postcode,delivery_road,delivery_detail)
 		values
-		(#{rno},#{uno},#{userid},#{name},#{r_id},#{item_name},#{price_unit},#{item_option},#{delivery_fee},
+		(#{rno},#{userid},#{r_id},#{item_name},#{price_unit},#{item_option},#{delivery_fee},
 		#{delivery_date},#{item_amount},#{total_reward},#{total_money},#{delivery_postcode},#{delivery_road},#{delivery_detail})
 	</insert>
 

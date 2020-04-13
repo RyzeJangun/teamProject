@@ -50,9 +50,7 @@ function execPostCode() {
        }
     }).open();
 }
-function check(){
-	document.form1.submit();
-}
+
 
 /*$(function() {
 	$("#btnPay").click(function(){
@@ -80,7 +78,7 @@ function check(){
 <%@ include file="../include/menu.jsp" %>
 <h1>${list.reward_name}</h1>
 <form name="form1" method="post" action="${path}/reward_info/reward_payment.do">
-	<table border="1" width="90%">
+	<table border="1">
 		<tr>
 		    <th>프로젝트번호</th>
 			<th>아이템일련번호</th>
@@ -95,43 +93,43 @@ function check(){
 			<th>총 리워드금액</th>
 			<th>총 결제금액</th>
 		</tr>
-              <c:forEach var="var" items="${pay_view}">
+              <c:forEach var="var" items="${pay_view}" begin="0" varStatus="i" >
 		<tr>	 	
-		        <td><input type="text" name="rno" value="${var.rno}" readonly></td>	        	
-				<td><input type="text" name="r_id" value="${var.r_id}" readonly></td>
-				<td><input type="text" name="item_name" value="${var.item_name}" readonly></td>
-				<td><input type="text" name="price_unit" value="<fmt:formatNumber value="${var.price_unit}"
+		        <td><input type="text" name="test[i].rno" value="${var.rno}" readonly></td>	        	
+				<td><input type="text" name="test[i].r_id" value="${var.r_id}" readonly></td>
+				<td><input type="text" name="test[i].item_name" value="${var.item_name}" readonly></td>
+				<td><input type="text" name="test[i].price_unit" value="<fmt:formatNumber value="${var.price_unit}"
 					pattern="#,###원" />" readonly></td>
-				<td><input type="text" name="item_option" value="${var.item_option}" readonly></td>
-				<td><input type="text" name="rest_amount" value="${var.rest_amount}" readonly></td>
-				<td><input type="text" name="delivery_fee" value="<fmt:formatNumber value="${var.delivery_fee}"
+				<td><input type="text" name="test[i].item_option" value="${var.item_option}" readonly></td>
+				<td>${var.rest_amount}</td>
+				<td><input type="text" name="test[i].delivery_fee" value="<fmt:formatNumber value="${var.delivery_fee}"
 					pattern="#,###원" />" readonly></td>
-				<td><input type="text" name="delivery_date" value="<fmt:formatDate value="${var.delivery_date}"
+				<td><input type="text" name="test[i].delivery_date" value="<fmt:formatDate value="${var.delivery_date}"
 					pattern="yyyy-MM-dd" />" readonly></td>
-				<td><input type="text" name="dc_ratio" value="${var.dc_ratio}" readonly></td>
-				<td><input type="number" name="item_amount" /></td>
-				<td><input type="text" name="total_reward" /></td>
-				<td><input type="text" name="total_money" /></td>	  
+				<td><input type="text" name="test[i].dc_ratio" value="${var.dc_ratio}" readonly></td>
+				<td><input type="number" name="test[i].item_amount" /></td>
+				<td><input type="text" name="test[i].total_reward" /></td>
+				<td><input type="text" name="test[i].total_money" /></td>
+				<td><input type="text" name="test[i].userid" value="${user_info.userid}" /></td>	  
 		</tr>
-		     </c:forEach>
-		 <tr>    	<td><input type="text" name="uno" value="${dto1.uno}" readonly></td>
-		<td><input type="text" name="userid" value="${dto1.userid}" readonly></td>
-		<td><input type="text" name="name " value="${dto1.name}" readonly></td></tr>
-		<tr align="center"><th colspan="10">배송지 주소</th><th></th></tr>
+
+		 </c:forEach>
+
+		<!--  <tr align="center"><th colspan="12">배송지 주소</th><th></th></tr>
 		<tr align="center">
-		 <td colspan="10"><input placeholder="우편번호" name="delivery_postcode" id="delivery_postcode" type="text" readonly="readonly"></td><td rowspan="3"><button type="button" class="btn btn-default"
+		 <td colspan="11"><input placeholder="우편번호" name="delivery_postcode" id="delivery_postcode" type="text" readonly="readonly"></td><td rowspan="3"><button type="button" class="btn btn-default"
 					onclick="execPostCode();">
 					<i class="fa fa-search"></i> 우편번호 찾기
 				</button></td>
 		 </tr>
 		 <tr align="center">
-		 <td colspan="10"><input placeholder="도로명 주소" name="delivery_road" id="delivery_road" type="text" readonly="readonly"></td>
+		 <td colspan="11"><input placeholder="도로명 주소" name="delivery_road" id="delivery_road" type="text" readonly="readonly"></td>
 		 </tr>
 		 <tr align="center">
-		 <td colspan="10"><input placeholder="세부 주소" name=" delivery_detail" id="delivery_detail" type="text"></td>
-		 </tr>		
+		 <td colspan="11"><input placeholder="세부 주소" name="delivery_detail" id="delivery_detail" type="text"></td>
+		 </tr> -->
 	</table>
-	<button type="button" onclick="check()">구매하기</button><input type="submit" value="구매하기">
+	<input type="submit" value="구매하기">
 	</form>
 </body>
 </html>

@@ -10,8 +10,10 @@ public class User_rewardDTO {
 	private String name;//3.사용자 성명 -->희망사항:가능하면 김*깡 이런식으로 익명성을 보장했으면 좋겠음
 	private String company_name;//4.회사명
 	private String r_id;//--단계별 번호 -->구분
+	private String item_name;//아이템 명
 	private int price_unit;//단계별 리워드 펀딩금액
 	private int total_reward;//7.나의 리워드총액
+	private int dc_ratio;//혜택률
 	private int delivery_fee;//배송비
 	private int total_money;//나의 리워드 펀딩금액+배송비 -->로직에서 계산
 	private int item_amount;//구매자가 선택한 아이템 수량
@@ -120,14 +122,31 @@ public class User_rewardDTO {
 	public void setDelivery_date(Date delivery_date) {
 		this.delivery_date = delivery_date;
 	}
+	
+	
+	public int getDc_ratio() {
+		return dc_ratio;
+	}
+	public void setDc_ratio(int dc_ratio) {
+		this.dc_ratio = dc_ratio;
+	}
+	
+	
+	public String getItem_name() {
+		return item_name;
+	}
+	public void setItem_name(String item_name) {
+		this.item_name = item_name;
+	}
+	
 	@Override
 	public String toString() {
 		return "User_rewardDTO [rno=" + rno + ", uno=" + uno + ", userid=" + userid + ", name=" + name
-				+ ", company_name=" + company_name + ", r_id=" + r_id + ", price_unit=" + price_unit + ", total_reward="
-				+ total_reward + ", delivery_fee=" + delivery_fee + ", total_money=" + total_money + ", item_amount="
-				+ item_amount + ", item_option=" + item_option + ", delivery_date=" + delivery_date
-				+ ", delivery_postcode=" + delivery_postcode + ", delivery_road=" + delivery_road + ", delivery_detail="
-				+ delivery_detail + "]";
+				+ ", company_name=" + company_name + ", r_id=" + r_id + ", item_name=" + item_name + ", price_unit="
+				+ price_unit + ", total_reward=" + total_reward + ", dc_ratio=" + dc_ratio + ", delivery_fee="
+				+ delivery_fee + ", total_money=" + total_money + ", item_amount=" + item_amount + ", item_option="
+				+ item_option + ", delivery_date=" + delivery_date + ", delivery_postcode=" + delivery_postcode
+				+ ", delivery_road=" + delivery_road + ", delivery_detail=" + delivery_detail + "]";
 	}
 	
 	 
