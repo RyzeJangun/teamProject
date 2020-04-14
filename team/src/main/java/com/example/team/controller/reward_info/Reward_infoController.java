@@ -123,13 +123,14 @@ public class Reward_infoController {
 
 	//리워드 투자하기
 	@RequestMapping("reward_payment.do")
-	public String pay(@ModelAttribute User_rewardListDTO[] dto,HttpSession session){	
-		System.out.println(dto);
-		/*
-		 * String userid=(String)session.getAttribute("userid"); dto.setUserid(userid);
-		 * reward_infoService.pay(dto);
-		 */	
+	public String pay(@ModelAttribute User_rewardListDTO test,HttpSession session){	
+		System.out.println(test);		
+		MemberDTO dto1=new MemberDTO();
+		String userid=(String)session.getAttribute("userid"); 	  
+		dto1.setUserid(userid);
+		reward_infoService.pay(test);	
 		return "redirect:/reward_info/reward_infoList.do";
+	 
 	}
 
 	//본인이 한 리워드 투자 목록

@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
     
     <!-- 아이디 중복 체크 -->
-    <select id="userid_check" resultType="int">
+    <select id="userid_check" parameterType="String" resultType="int">
      select count(*) from user_info where userid=#{userid}
     </select>
     

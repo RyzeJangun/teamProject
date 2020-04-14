@@ -17,16 +17,16 @@ import com.example.team.service.member.MemberService;
 @Controller
 @RequestMapping("member/*")
 public class MemberController {
-	
+
 	@Inject
 	MemberService memberService;
-	
+
 	//로그인 경로
 	@RequestMapping("login_route.do")
 	public String login_route(){
 		return "member/login";
 	}
-	
+
 	//로그인
 	@RequestMapping("login.do")
 	public ModelAndView login(MemberDTO dto, 
@@ -43,7 +43,7 @@ public class MemberController {
 		}
 		return mav;
 	}//login_check()
-	
+
 	//로그아웃
 	@RequestMapping("logout.do")
 	public ModelAndView logout(HttpSession session,ModelAndView mav) {
@@ -59,22 +59,24 @@ public class MemberController {
 	public String join_route() {
 		return "member/join";
 	}
-	
+
 	//회원가입
 	@RequestMapping("join.do")
 	public String join(@ModelAttribute MemberDTO dto) {
 		memberService.join(dto);
 		return "redirect:/member/login_route.do";
 	}
-	
+
 	//아이디 중복체크
-		@RequestMapping(value="userid_check.do", method = RequestMethod.GET)
-		@ResponseBody
-		public int userid_check(String userid) {
-			System.out.println(userid);
-			return memberService.userid_check(userid);
-		}
-	
+	@ResponseBody
+	@RequestMapping(value="userid_check.do", method = RequestMethod.GET)
+	public int userid_check(String userid) {
+		System.out.println(userid);	
+		int num=memberService.userid_check(userid);		
+		System.out.println(num);
+			return num;
+	}
+
 	//내정보
 	@RequestMapping("userInfo.do")
 	public ModelAndView userInfo(HttpSession session) {
@@ -83,7 +85,7 @@ public class MemberController {
 		ModelAndView mav =new ModelAndView();		
 		mav.setViewName("member/myPage");
 		mav.addObject("user_info", dto);
-        return mav;
+		return mav;
 	}
 	//계좌번호 등록 경로
 	@RequestMapping("ac_sign_route/{uno}")
@@ -101,7 +103,7 @@ public class MemberController {
 		return "redirect:/member/userInfo.do";
 	}
 
-	
-	
+
+
 
 }

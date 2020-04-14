@@ -5,25 +5,26 @@ import java.util.List;
 
 public class User_rewardListDTO {
 
-	private List<User_rewardListDTO> test;
+	private List<User_rewardDTO> test;
 
-	@Override
-	public String toString() {
-		return "User_rewardListDTO [test=" + test + "]";
-	}
 
-	public List<User_rewardListDTO> getTest() {
+	public List<User_rewardDTO> getTest() {
 		return test;
 	}
 
-	public void setTest(List<User_rewardListDTO> test) {
+	public void setTest(List<User_rewardDTO> test) {
 		this.test = test;
 	}
 	public User_rewardListDTO() {
 
 	}
+	
+	@Override
+	public String toString() {
+		return "User_rewardListDTO [test=" + test + "]";
+	}
 
-	public User_rewardListDTO(List<User_rewardListDTO> test) {
+	public User_rewardListDTO(List<User_rewardDTO> test) {
 	
 		this.test = test;
 	}	

@@ -11,6 +11,7 @@ import com.example.team.model.reward_info.dao.Reward_infoDAO;
 import com.example.team.model.reward_info.dto.Item_stepDTO;
 import com.example.team.model.reward_info.dto.Reward_infoDTO;
 import com.example.team.model.reward_info.dto.User_rewardDTO;
+import com.example.team.model.reward_info.dto.User_rewardListDTO;
 
 @Service
 public class Reward_infoServiceImpl implements Reward_infoService {
@@ -61,8 +62,8 @@ public class Reward_infoServiceImpl implements Reward_infoService {
 	}
 
 	@Override
-	public void pay(User_rewardDTO dto) {
-		reward_infoDao.pay(dto);
+	public void pay(User_rewardListDTO test) {
+		reward_infoDao.pay(test);
 	}
 
 	@Override

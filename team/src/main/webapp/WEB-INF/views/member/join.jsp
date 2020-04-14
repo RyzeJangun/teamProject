@@ -69,18 +69,18 @@ $(function(){
 		var userid=$("#userid").val();
 	    $.ajax({
 	        type:"GET",
+	        data:num,
 	        url:"${path}/member/userid_check.do?userid="+userid,
 	        success: function(num){
 	            if(num == 1){
 	            	$("#userid_check").text("아이디가 중복됩니다.");
 	            	$("#userid_check").css('color', 'red');   
+	            	$('#userid_check').focus();
 	            }else if(num == 0 && userid != ""){
 	                $("#userid_check").text("사용 가능한 아이디 입니다.");
-	            	$("#userid_check").css('color', 'green');   
-	            }else if(userid == ""){
-	                $("#userid_check").text("아이디 입력요망");
-	            	$("#userid_check").css('color', 'blue');   
-	            }//end if
+	            	$("#userid_check").css('color', 'green');  
+	            	$('#userid_check').focus(); 
+	            }  //end if	            
 	        }//end sucess
 	    });//end ajax
 	});//end function
@@ -97,6 +97,7 @@ $(function(){
 	        $('#confirm_passwd').focus();
 	   }	    
 	});
+});
 
 
 function check() {

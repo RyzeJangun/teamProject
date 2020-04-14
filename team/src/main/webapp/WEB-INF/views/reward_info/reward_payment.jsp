@@ -52,6 +52,22 @@ function execPostCode() {
 }
 
 
+function renameForModelAttribute() {
+    $("#form").each( function (index) {
+        $(this).find("input[name=rno]").attr("name", "test[" + index + "].rno");
+        $(this).find("input[name=r_id]").attr("name", "targets[" + index + "].r_id");
+        $(this).find("input[name=item_name]").attr("name", "targets[" + index + "].targetName");
+        $(this).find("input[name=price_unit]").attr("name", "targets[" + index + "].targetName");
+        $(this).find("input[name=item_option]").attr("name", "targets[" + index + "].targetName");
+        $(this).find("input[name=delivery_fee]").attr("name", "targets[" + index + "].targetName");
+        $(this).find("input[name=delivery_date]").attr("name", "targets[" + index + "].targetName");
+        $(this).find("input[name=item_amount]").attr("name", "targets[" + index + "].targetName");
+        $(this).find("input[name=total_reward]").attr("name", "targets[" + index + "].targetName");
+        $(this).find("input[name=total_money]").attr("name", "targets[" + index + "].targetName");
+        $(this).find("input[name=userid]").attr("name", "targets[" + index + "].targetName");
+        
+    }
+}
 /*$(function() {
 	$("#btnPay").click(function(){
 		var rest_amount = $("#now_fund").val();
@@ -93,24 +109,24 @@ function execPostCode() {
 			<th>총 리워드금액</th>
 			<th>총 결제금액</th>
 		</tr>
-              <c:forEach var="var" items="${pay_view}" begin="0" varStatus="i" >
+              <c:forEach var="var" items="${pay_view}" >
 		<tr>	 	
-		        <td><input type="text" name="test[i].rno" value="${var.rno}" readonly></td>	        	
-				<td><input type="text" name="test[i].r_id" value="${var.r_id}" readonly></td>
-				<td><input type="text" name="test[i].item_name" value="${var.item_name}" readonly></td>
-				<td><input type="text" name="test[i].price_unit" value="<fmt:formatNumber value="${var.price_unit}"
+		        <td><input type="text" name="rno" value="${var.rno}" readonly></td>	        	
+				<td><input type="text" name="r_id" value="${var.r_id}" readonly></td>
+				<td><input type="text" name="item_name" value="${var.item_name}" readonly></td>
+				<td><input type="text" name="price_unit" value="<fmt:formatNumber value="${var.price_unit}"
 					pattern="#,###원" />" readonly></td>
-				<td><input type="text" name="test[i].item_option" value="${var.item_option}" readonly></td>
+				<td><input type="text" name="item_option" value="${var.item_option}" readonly></td>
 				<td>${var.rest_amount}</td>
-				<td><input type="text" name="test[i].delivery_fee" value="<fmt:formatNumber value="${var.delivery_fee}"
+				<td><input type="text" name="delivery_fee" value="<fmt:formatNumber value="${var.delivery_fee}"
 					pattern="#,###원" />" readonly></td>
-				<td><input type="text" name="test[i].delivery_date" value="<fmt:formatDate value="${var.delivery_date}"
+				<td><input type="text" name="delivery_date" value="<fmt:formatDate value="${var.delivery_date}"
 					pattern="yyyy-MM-dd" />" readonly></td>
-				<td><input type="text" name="test[i].dc_ratio" value="${var.dc_ratio}" readonly></td>
-				<td><input type="number" name="test[i].item_amount" /></td>
-				<td><input type="text" name="test[i].total_reward" /></td>
-				<td><input type="text" name="test[i].total_money" /></td>
-				<td><input type="text" name="test[i].userid" value="${user_info.userid}" /></td>	  
+				<td><input type="text" name="dc_ratio" value="${var.dc_ratio}" readonly></td>
+				<td><input type="number" name="item_amount" /></td>
+				<td><input type="text" name="total_reward" /></td>
+				<td><input type="text" name="total_money" /></td>
+				<td><input type="text" name="userid" value="${user_info.userid}" /></td>	  
 		</tr>
 
 		 </c:forEach>
