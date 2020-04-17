@@ -15,14 +15,15 @@ public class User_rewardListDTO {
 	public void setTest(List<User_rewardDTO> test) {
 		this.test = test;
 	}
-	public User_rewardListDTO() {
-
-	}
-	
 	@Override
 	public String toString() {
 		return "User_rewardListDTO [test=" + test + "]";
 	}
+	
+	public User_rewardListDTO() {
+
+	}
+	
 
 	public User_rewardListDTO(List<User_rewardDTO> test) {
 	

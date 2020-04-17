@@ -2,6 +2,7 @@ package com.example.team.controller.reward_info;
 
 
 import java.io.File;
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -64,7 +65,7 @@ public class Reward_infoController {
 	@RequestMapping("pro_like.do")
 	public String pro_like(int rno,HttpSession session) {
 		reward_infoService.pro_like(rno,session);
-		return "redirect:/reward_info/reward_infoDetail"+rno;
+		return "redirect:/reward_info/reward_infoDetail";
 	}
 
 	//리워드 아이템 세부정보 창
@@ -116,21 +117,21 @@ public class Reward_infoController {
 		mav.setViewName("reward_info/reward_payment");	
 		mav.addObject("user_info", dto);
 		mav.addObject("pay_view", pay_view);
+		mav.addObject("reward_name", reward_infoService.detailReward(rno));
 		System.out.println(dto);
 		System.out.println(pay_view);
 		return mav;
 	}
+	
+	
 
 	//리워드 투자하기
-	@RequestMapping("reward_payment.do")
-	public String pay(@ModelAttribute User_rewardListDTO test,HttpSession session){	
-		System.out.println(test);		
-		MemberDTO dto1=new MemberDTO();
-		String userid=(String)session.getAttribute("userid"); 	  
-		dto1.setUserid(userid);
-		reward_infoService.pay(test);	
+	@RequestMapping("reward_payment/{rno}")
+	public String pay(@PathVariable("rno") int rno, @ModelAttribute User_rewardDTO dto,HttpSession session){	
+		String userid=(String)session.getAttribute("userid");
+		dto.setUserid(userid);
+		reward_infoService.pay(dto);	
 		return "redirect:/reward_info/reward_infoList.do";
-	 
 	}
 
 	//본인이 한 리워드 투자 목록

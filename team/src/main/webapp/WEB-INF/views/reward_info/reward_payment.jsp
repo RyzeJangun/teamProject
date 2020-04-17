@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <%@ include file="../include/header.jsp"%>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript">
+<script>
 function execPostCode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -51,23 +51,45 @@ function execPostCode() {
     }).open();
 }
 
+/*$(function(){
+	$("#userid").blur(function(){
+		var userid=$("#userid").val();
+	    $.ajax({
+	        type:"GET",
+	        data:num,
+	        url:"${path}/reward_info/reward_add.do?r_id="+r_id,
+	        success: function(num){
+	            if(num == 1){
+	            	$("#userid_check").text("아이디가 중복됩니다.");
+	            	$("#userid_check").css('color', 'red');   
+	            	$('#userid_check').focus();
+	            }else if(num == 0 && userid != ""){
+	                $("#userid_check").text("사용 가능한 아이디 입니다.");
+	            	$("#userid_check").css('color', 'green');  
+	            	$('#userid_check').focus(); 
+	            }  //end if	            
+	        }//end sucess
+	    });//end ajax
+	});//end function
+});*/
 
-function renameForModelAttribute() {
-    $("#form").each( function (index) {
+/*function renameForModelAttribute() {
+	var index= $("#index").val();
+    $("#form").click( function (index) {
         $(this).find("input[name=rno]").attr("name", "test[" + index + "].rno");
-        $(this).find("input[name=r_id]").attr("name", "targets[" + index + "].r_id");
-        $(this).find("input[name=item_name]").attr("name", "targets[" + index + "].targetName");
-        $(this).find("input[name=price_unit]").attr("name", "targets[" + index + "].targetName");
-        $(this).find("input[name=item_option]").attr("name", "targets[" + index + "].targetName");
-        $(this).find("input[name=delivery_fee]").attr("name", "targets[" + index + "].targetName");
-        $(this).find("input[name=delivery_date]").attr("name", "targets[" + index + "].targetName");
-        $(this).find("input[name=item_amount]").attr("name", "targets[" + index + "].targetName");
-        $(this).find("input[name=total_reward]").attr("name", "targets[" + index + "].targetName");
-        $(this).find("input[name=total_money]").attr("name", "targets[" + index + "].targetName");
-        $(this).find("input[name=userid]").attr("name", "targets[" + index + "].targetName");
+        $(this).find("input[name=r_id]").attr("name", "test[" + index + "].r_id");
+        $(this).find("input[name=item_name]").attr("name", "test[" + index + "].item_name");
+        $(this).find("input[name=price_unit]").attr("name", "test[" + index + "].price_unit");
+        $(this).find("input[name=item_option]").attr("name", "test[" + index + "].item_option");
+        $(this).find("input[name=delivery_fee]").attr("name", "test[" + index + "].delivery_fee");
+        $(this).find("input[name=delivery_date]").attr("name", "test[" + index + "].delivery_date");
+        $(this).find("input[name=item_amount]").attr("name", "test[" + index + "].item_amount");
+        $(this).find("input[name=total_reward]").attr("name", "test[" + index + "].total_reward");
+        $(this).find("input[name=total_money]").attr("name", "test[" + index + "].total_money");
+        $(this).find("input[name=userid]").attr("name", "test[" + index + "].userid");
         
     }
-}
+}*/
 /*$(function() {
 	$("#btnPay").click(function(){
 		var rest_amount = $("#now_fund").val();
@@ -88,15 +110,41 @@ function renameForModelAttribute() {
 /* $(document).ready(function(){
 	
 }) */
+
+function add () {
+	var hm = document.form.item_amount;
+	var price_unit=document.form.price_unit.value;
+	var delivery_fee=document.form.delivery_fee.value;
+	var total_reward = document.form.total_reward;
+	var total_money=document.form.total_money;
+	hm.value ++ ;
+	total_reward.value = eval(hm.value) * eval(price_unit);
+	total_money.value= eval(hm.value) * eval(price_unit) + eval(delivery_fee);
+	
+}
+
+function del () {
+	var hm = document.form.item_amount;
+	var price_unit=document.form.price_unit.value;
+	var delivery_fee=document.form.delivery_fee.value;
+	var total_reward = document.form.total_reward;
+	var total_money=document.form.total_money;
+		if (hm.value > 1) {
+			hm.value -- ;
+			total_reward.value = eval(hm.value) * eval(price_unit);
+			total_money.value= eval(hm.value) * eval(price_unit) + eval(delivery_fee);
+		}
+}
+
 </script>
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
-<h1>${list.reward_name}</h1>
-<form name="form1" method="post" action="${path}/reward_info/reward_payment.do">
-	<table border="1">
+<h1>${reward_name.reward_name}</h1>
+<form name="form" method="post" action="${path}/reward_info/reward_payment.do">
+	<table border="1" width="120%">
 		<tr>
-		    <th>프로젝트번호</th>
+		    <th>아이템 선택</th>
 			<th>아이템일련번호</th>
 			<th>상품명</th>
 			<th>단위 리워드 가격</th>
@@ -109,28 +157,30 @@ function renameForModelAttribute() {
 			<th>총 리워드금액</th>
 			<th>총 결제금액</th>
 		</tr>
-              <c:forEach var="var" items="${pay_view}" >
-		<tr>	 	
-		        <td><input type="text" name="rno" value="${var.rno}" readonly></td>	        	
-				<td><input type="text" name="r_id" value="${var.r_id}" readonly></td>
+              <c:forEach var="var" items="${pay_view}">
+		<tr>    
+		        <td><input type="hidden" name="rno" value="${var.rno}"><input type="hidden" name="reward_name" value="${reward_name.reward_name}"><input type="hidden" name="company_name" value="${reward_name.company_name}"><input type="text" name="r_id" value="${var.r_id}"></td>	 	           	
+				<td>${var.r_id}</td>
 				<td><input type="text" name="item_name" value="${var.item_name}" readonly></td>
-				<td><input type="text" name="price_unit" value="<fmt:formatNumber value="${var.price_unit}"
-					pattern="#,###원" />" readonly></td>
+				<td><input type="text" name="price_unit" value="${var.price_unit}" readonly>원</td>
 				<td><input type="text" name="item_option" value="${var.item_option}" readonly></td>
 				<td>${var.rest_amount}</td>
-				<td><input type="text" name="delivery_fee" value="<fmt:formatNumber value="${var.delivery_fee}"
-					pattern="#,###원" />" readonly></td>
+				<td><input type="text" name="delivery_fee" value="${var.delivery_fee}" readonly/>원</td>
 				<td><input type="text" name="delivery_date" value="<fmt:formatDate value="${var.delivery_date}"
 					pattern="yyyy-MM-dd" />" readonly></td>
-				<td><input type="text" name="dc_ratio" value="${var.dc_ratio}" readonly></td>
-				<td><input type="number" name="item_amount" /></td>
-				<td><input type="text" name="total_reward" /></td>
-				<td><input type="text" name="total_money" /></td>
-				<td><input type="text" name="userid" value="${user_info.userid}" /></td>	  
+				<td><input type="text" name="dc_ratio" value="${var.dc_ratio}" readonly>%</td>
+				<td>
+                    <input type="button" value=" - " onclick="del()">
+                    <input type="text" name="item_amount" value="0">
+                    <input type="button" value=" + " onclick="add()"></td>
+				<td><input type="text" name="total_reward" value="0" readonly/>원</td>
+				<td><input type="text" name="total_money" value="0" readonly/></td>
+				<td><input type="hidden" name="userid" value="${user_info.userid}" /><input type="hidden" name="name" value="${user_info.name}" /><input type="hidden" name="uno" value="${user_info.uno}" /></td>	  
 		</tr>
-
-		 </c:forEach>
-
+ </c:forEach>
+		 
+		 
+	
 		<!--  <tr align="center"><th colspan="12">배송지 주소</th><th></th></tr>
 		<tr align="center">
 		 <td colspan="11"><input placeholder="우편번호" name="delivery_postcode" id="delivery_postcode" type="text" readonly="readonly"></td><td rowspan="3"><button type="button" class="btn btn-default"
@@ -144,8 +194,8 @@ function renameForModelAttribute() {
 		 <tr align="center">
 		 <td colspan="11"><input placeholder="세부 주소" name="delivery_detail" id="delivery_detail" type="text"></td>
 		 </tr> -->
+	<tr><td colspan="11" align="center"><input type="submit" value="구매하기"></td></tr>
 	</table>
-	<input type="submit" value="구매하기">
 	</form>
 </body>
 </html>

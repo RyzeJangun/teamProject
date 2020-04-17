@@ -8,6 +8,7 @@ public class User_rewardDTO {
 	private int uno;
 	private String userid;//2.사용자 아이디 -->희망사항:가능하면 u***id 이런식으로 익명성을 보장했으면 좋겠음
 	private String name;//3.사용자 성명 -->희망사항:가능하면 김*깡 이런식으로 익명성을 보장했으면 좋겠음
+	private String reward_name;
 	private String company_name;//4.회사명
 	private String r_id;//--단계별 번호 -->구분
 	private String item_name;//아이템 명
@@ -19,9 +20,9 @@ public class User_rewardDTO {
 	private int item_amount;//구매자가 선택한 아이템 수량
 	private String item_option;//상품 옵션
 	private Date delivery_date;//배송예정일
-	private String delivery_postcode;//배송지 우편번호
-	private String delivery_road;//배송지 도로명 주소
-	private String delivery_detail;//배송지 세부주소
+	//private String delivery_postcode;//배송지 우편번호
+	//private String delivery_road;//배송지 도로명 주소
+	//private String delivery_detail;//배송지 세부주소
 	
 	public int getRno() {
 		return rno;
@@ -97,7 +98,7 @@ public class User_rewardDTO {
 	}
 	
 	
-	public String getDelivery_postcode() {
+	/*public String getDelivery_postcode() {
 		return delivery_postcode;
 	}
 	public void setDelivery_postcode(String delivery_postcode) {
@@ -114,7 +115,7 @@ public class User_rewardDTO {
 	}
 	public void setDelivery_detail(String delivery_detail) {
 		this.delivery_detail = delivery_detail;
-	}
+	}*/
 		
 	public Date getDelivery_date() {
 		return delivery_date;
@@ -139,14 +140,20 @@ public class User_rewardDTO {
 		this.item_name = item_name;
 	}
 	
+	
+	public String getReward_name() {
+		return reward_name;
+	}
+	public void setReward_name(String reward_name) {
+		this.reward_name = reward_name;
+	}
 	@Override
 	public String toString() {
 		return "User_rewardDTO [rno=" + rno + ", uno=" + uno + ", userid=" + userid + ", name=" + name
-				+ ", company_name=" + company_name + ", r_id=" + r_id + ", item_name=" + item_name + ", price_unit="
-				+ price_unit + ", total_reward=" + total_reward + ", dc_ratio=" + dc_ratio + ", delivery_fee="
-				+ delivery_fee + ", total_money=" + total_money + ", item_amount=" + item_amount + ", item_option="
-				+ item_option + ", delivery_date=" + delivery_date + ", delivery_postcode=" + delivery_postcode
-				+ ", delivery_road=" + delivery_road + ", delivery_detail=" + delivery_detail + "]";
+				+ ", reward_name=" + reward_name + ", company_name=" + company_name + ", r_id=" + r_id + ", item_name="
+				+ item_name + ", price_unit=" + price_unit + ", total_reward=" + total_reward + ", dc_ratio=" + dc_ratio
+				+ ", delivery_fee=" + delivery_fee + ", total_money=" + total_money + ", item_amount=" + item_amount
+				+ ", item_option=" + item_option + ", delivery_date=" + delivery_date + "]";
 	}
 	
 	 

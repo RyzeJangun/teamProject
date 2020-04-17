@@ -45,8 +45,8 @@ public class Reward_infoDAOImpl implements Reward_infoDAO {
 	}
 	
 	@Override
-	public void pay(User_rewardListDTO test) {
-		sqlSession.insert("reward_info.pay", test);
+	public void pay(User_rewardDTO dto) {
+		sqlSession.insert("reward_info.pay", dto);
 	}
 	
 	@Override

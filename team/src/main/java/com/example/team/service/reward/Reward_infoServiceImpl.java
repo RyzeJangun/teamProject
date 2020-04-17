@@ -62,8 +62,8 @@ public class Reward_infoServiceImpl implements Reward_infoService {
 	}
 
 	@Override
-	public void pay(User_rewardListDTO test) {
-		reward_infoDao.pay(test);
+	public void pay(User_rewardDTO dto) {
+		reward_infoDao.pay(dto);
 	}
 
 	@Override
