@@ -120,17 +120,19 @@ public class Reward_infoController {
 		mav.addObject("reward_name", reward_infoService.detailReward(rno));
 		System.out.println(dto);
 		System.out.println(pay_view);
+		System.out.print(reward_infoService.detailReward(rno));
 		return mav;
 	}
 	
 	
 
 	//리워드 투자하기
-	@RequestMapping("reward_payment/{rno}")
-	public String pay(@PathVariable("rno") int rno, @ModelAttribute User_rewardDTO dto,HttpSession session){	
-		String userid=(String)session.getAttribute("userid");
-		dto.setUserid(userid);
-		reward_infoService.pay(dto);	
+	@RequestMapping("reward_payment.do")
+	public String pay(User_rewardDTO dto,Item_stepDTO dto2,HttpSession session){	
+		String userid=(String)session.getAttribute("userid");		
+		dto.setUserid(userid);	
+		reward_infoService.pay(dto,session);	
+		item_stepService.amountUpdate(dto2);
 		return "redirect:/reward_info/reward_infoList.do";
 	}
 

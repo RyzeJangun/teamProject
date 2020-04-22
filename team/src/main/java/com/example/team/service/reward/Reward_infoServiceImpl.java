@@ -62,7 +62,7 @@ public class Reward_infoServiceImpl implements Reward_infoService {
 	}
 
 	@Override
-	public void pay(User_rewardDTO dto) {
+	public void pay(User_rewardDTO dto,HttpSession session) {
 		reward_infoDao.pay(dto);
 	}
 

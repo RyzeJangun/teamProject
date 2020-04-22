@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!--남은 수량 갱신 -->
 	<update id="amount">
-	 update item_step set rest_amount=(rest_amount-#{item_amount}) where r_id=#{r_id}
+	 update item_step set rest_amount=rest_amount-#{item_amount} where r_id=#{r_id}
 	</update>
 	
 	<!--  -->

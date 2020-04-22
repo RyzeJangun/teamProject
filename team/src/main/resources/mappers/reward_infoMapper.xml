@@ -16,19 +16,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!--리워드 프로젝트 조회수 증가 -->
 	<update id="viewUp">
-		update reward_info set pro_view=pro_view+1 where rno=#{rno}
+		update reward_info set pro_view=pro_view+1 where
+		rno=#{rno}
 	</update>
 
 	<!--리워드 프로젝트 좋아요 증가 -->
 	<update id="pro_likeUp">
-		update reward_info set pro_like=pro_like+1 where rno=#{rno}
+		update reward_info set pro_like=pro_like+1 where
+		rno=#{rno}
 	</update>
 
 	<!--사용자가 선택한 리워드 프로젝트 세부정보 -->
 	<select id="reward_infoDetail"
 		resultType="com.example.team.model.reward_info.dto.Reward_infoDTO">
 		select * from reward_info where
-		rno=#{rno} order by r_id
+		rno=#{rno}
 	</select>
 
 	<!-- 리워드 아이템 결제 정보 -->
@@ -39,17 +41,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 본인이 한 리워드 투자 목록 -->
 	<select id="user_rewardList">
-		select * from user_reward where userid=#{userid}
+		select * from user_reward where uno=#{uno} order by
+		rno
 	</select>
 
 
 	<!--리워드 투자 정보 추가 -->
 	<insert id="pay">
 		insert into user_reward
-		(uno,rno,userid,name,reward_name,company_name,r_id,item_name,price_unit,item_option,delivery_fee,delivery_date,item_amount,total_reward,total_money,dc_ratio)
+		(uno,rno,userid,name,reward_name,company_name,r_id,item_name,price_unit,item_option,delivery_fee,item_amount,total_reward,total_money,dc_ratio,delivery_date,delivery_postcode,delivery_road,delivery_detail)
 		values
-		(#{uno},#{rno},#{userid},#{name},#{reward_name},#{company_name},#{r_id},#{item_name},#{price_unit},#{item_option},#{delivery_fee},
-		#{delivery_date},#{item_amount},#{total_reward},#{total_money},#{dc_ratio})
+		(#{uno},#{rno},#{userid},#{name},#{reward_name},#{company_name},#{r_id},#{item_name},#{price_unit},#{item_option},#{delivery_fee},#{item_amount},#{total_reward},#{total_money},#{dc_ratio},#{delivery_date},#{delivery_postcode},#{delivery_road},#{delivery_detail})
 	</insert>
 
 	<!-- 리워드 프로젝트 -->

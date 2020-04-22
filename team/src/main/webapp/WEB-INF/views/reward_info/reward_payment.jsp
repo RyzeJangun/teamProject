@@ -159,7 +159,7 @@ function del () {
 		</tr>
               <c:forEach var="var" items="${pay_view}">
 		<tr>    
-		        <td><input type="hidden" name="rno" value="${var.rno}"><input type="hidden" name="reward_name" value="${reward_name.reward_name}"><input type="hidden" name="company_name" value="${reward_name.company_name}"><input type="text" name="r_id" value="${var.r_id}"></td>	 	           	
+		        <td><input type="text" name="rno" value="${var.rno}"><input type="text" name="reward_name" value="${reward_name.reward_name}"><input type="text" name="company_name" value="${reward_name.company_name}"><input type="text" name="r_id" value="${var.r_id}"></td>	 	           	
 				<td>${var.r_id}</td>
 				<td><input type="text" name="item_name" value="${var.item_name}" readonly></td>
 				<td><input type="text" name="price_unit" value="${var.price_unit}" readonly>원</td>
@@ -167,21 +167,18 @@ function del () {
 				<td>${var.rest_amount}</td>
 				<td><input type="text" name="delivery_fee" value="${var.delivery_fee}" readonly/>원</td>
 				<td><input type="text" name="delivery_date" value="<fmt:formatDate value="${var.delivery_date}"
-					pattern="yyyy-MM-dd" />" readonly></td>
+					pattern="yyyy/MM/dd" />" readonly></td>
 				<td><input type="text" name="dc_ratio" value="${var.dc_ratio}" readonly>%</td>
 				<td>
                     <input type="button" value=" - " onclick="del()">
                     <input type="text" name="item_amount" value="0">
                     <input type="button" value=" + " onclick="add()"></td>
-				<td><input type="text" name="total_reward" value="0" readonly/>원</td>
-				<td><input type="text" name="total_money" value="0" readonly/></td>
-				<td><input type="hidden" name="userid" value="${user_info.userid}" /><input type="hidden" name="name" value="${user_info.name}" /><input type="hidden" name="uno" value="${user_info.uno}" /></td>	  
+				<td><input type="text" name="total_reward" value="0"/>원</td>
+				<td><input type="text" name="total_money" value="0"/></td>
+				<td><input type="text" name="userid" value="${user_info.userid}" /><input type="text" name="name" value="${user_info.name}" /><input type="text" name="uno" value="${user_info.uno}" /></td>	  
 		</tr>
- </c:forEach>
-		 
-		 
-	
-		<!--  <tr align="center"><th colspan="12">배송지 주소</th><th></th></tr>
+ 			</c:forEach>
+		 <tr align="center"><th colspan="12">배송지 주소</th><th></th></tr>
 		<tr align="center">
 		 <td colspan="11"><input placeholder="우편번호" name="delivery_postcode" id="delivery_postcode" type="text" readonly="readonly"></td><td rowspan="3"><button type="button" class="btn btn-default"
 					onclick="execPostCode();">
@@ -193,8 +190,8 @@ function del () {
 		 </tr>
 		 <tr align="center">
 		 <td colspan="11"><input placeholder="세부 주소" name="delivery_detail" id="delivery_detail" type="text"></td>
-		 </tr> -->
-	<tr><td colspan="11" align="center"><input type="submit" value="구매하기"></td></tr>
+		 </tr>
+	<tr><td colspan="12" align="center"><button type="submit">구매하기</button></td></tr>
 	</table>
 	</form>
 </body>

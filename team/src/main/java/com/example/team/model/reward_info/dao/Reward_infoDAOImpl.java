@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.example.team.model.reward_info.dto.Item_stepDTO;
 import com.example.team.model.reward_info.dto.Reward_infoDTO;
 import com.example.team.model.reward_info.dto.User_rewardDTO;
-import com.example.team.model.reward_info.dto.User_rewardListDTO;
+
 
 @Repository
 public class Reward_infoDAOImpl implements Reward_infoDAO {

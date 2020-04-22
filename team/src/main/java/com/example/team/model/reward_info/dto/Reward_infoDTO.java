@@ -11,6 +11,7 @@ public class Reward_infoDTO {
 	private String reward_category;//4.카테고리 명 예)IT 패션 생필등
 	private Date start_date;//5.게시일자
 	private Date end_date;//6.마감일자
+	private Date d_day;
 	private int reward_max;//9.목표치
 	private int reward_now;//10.현재투자액
 	private int reward_ratio;//리워드 현재 투자 비율
@@ -232,13 +233,21 @@ public class Reward_infoDTO {
 		this.file1 = file1;
 	}
 	
+	
+	public Date getD_day() {
+		return d_day;
+	}
+	public void setD_day(Date d_day) {
+		this.d_day = d_day;
+	}
+	
 	@Override
 	public String toString() {
 		return "Reward_infoDTO [rno=" + rno + ", company_name=" + company_name + ", reward_name=" + reward_name
 				+ ", reward_category=" + reward_category + ", start_date=" + start_date + ", end_date=" + end_date
-				+ ", reward_max=" + reward_max + ", reward_now=" + reward_now + ", reward_ratio=" + reward_ratio
-				+ ", reward_investor=" + reward_investor + ", r_id=" + r_id + ", step_investor=" + step_investor
-				+ ", item_name=" + item_name + ", price_unit=" + price_unit + ", dc_ratio=" + dc_ratio
+				+ ", d_day=" + d_day + ", reward_max=" + reward_max + ", reward_now=" + reward_now + ", reward_ratio="
+				+ reward_ratio + ", reward_investor=" + reward_investor + ", r_id=" + r_id + ", step_investor="
+				+ step_investor + ", item_name=" + item_name + ", price_unit=" + price_unit + ", dc_ratio=" + dc_ratio
 				+ ", total_amount=" + total_amount + ", item_option=" + item_option + ", delivery_fee=" + delivery_fee
 				+ ", delivery_date=" + delivery_date + ", pro_type=" + pro_type + ", pro_sign=" + pro_sign
 				+ ", pro_like=" + pro_like + ", pro_title=" + pro_title + ", pro_content=" + pro_content + ", pro_file="

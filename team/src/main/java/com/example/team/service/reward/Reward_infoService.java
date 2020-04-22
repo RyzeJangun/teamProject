@@ -12,7 +12,7 @@ import com.example.team.model.reward_info.dto.User_rewardDTO;
 public interface Reward_infoService {
 	public List<Reward_infoDTO> list();
 	public Reward_infoDTO detailReward(int rno);
-	public void pay(User_rewardDTO dto);
+	public void pay(User_rewardDTO dto,HttpSession session);
 	public User_rewardDTO user_rewardList(String userid);
 	public Item_stepDTO item_infoDetail(String r_id);
 	public void images(Reward_infoDTO dto);

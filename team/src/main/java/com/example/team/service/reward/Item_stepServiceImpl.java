@@ -26,4 +26,9 @@ public class Item_stepServiceImpl implements Item_stepService {
 		return item_stepDao.pay_view(rno);
 	}
 	
+	@Override
+	public void amountUpdate(Item_stepDTO dto2) {
+		item_stepDao.amountUpdate(dto2);
+	}
+	
 }

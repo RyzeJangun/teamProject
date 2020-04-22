@@ -24,5 +24,10 @@ public class Item_stepDAOImpl implements Item_stepDAO {
 	public List<Item_stepDTO> pay_view(int rno) {
 		return sqlSession.selectList("reward_info.paymentInfo",rno);
 	}
+	
+	@Override
+	public void amountUpdate(Item_stepDTO dto2) {
+		sqlSession.update("item_step.amount",dto2);
+	}
 
 }

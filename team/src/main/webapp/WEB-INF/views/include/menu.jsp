@@ -8,7 +8,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 <a href="${path}/member/join_route.do">회원가입</a> |
 <a href="${path}/fund_info/user_fund_route.do">투자정보</a> |
 <a href="${path}/reward_info/reward_infoList.do">리워드 정보</a> |
-<a href="#">내가 투자한 리워드 정보</a> |
+<a href="${path}/reward_info/user_reward.do">내가 투자한 리워드 정보</a> |
 <c:if test="${sessionScope.admin_userid != null}">
 	<a href="${path}/member/memberList_route.do">회원정보목록</a> | 
 </c:if>
