@@ -38,6 +38,9 @@ public class Reward_infoDTO {
 	private Date pro_open;//28.오픈예정일
 	private int pro_limit;//29.기간제한 (0=종료 1=제한 x)
 	private MultipartFile file1;
+	//추가
+	private int total_reward;
+	
 	public int getRno() {
 		return rno;
 	}
@@ -241,6 +244,13 @@ public class Reward_infoDTO {
 		this.d_day = d_day;
 	}
 	
+	public int getTotal_reward() {
+		return total_reward;
+	}
+	public void setTotal_reward(int total_reward) {
+		this.total_reward = total_reward;
+	}
+	
 	@Override
 	public String toString() {
 		return "Reward_infoDTO [rno=" + rno + ", company_name=" + company_name + ", reward_name=" + reward_name
@@ -253,7 +263,7 @@ public class Reward_infoDTO {
 				+ ", pro_like=" + pro_like + ", pro_title=" + pro_title + ", pro_content=" + pro_content + ", pro_file="
 				+ pro_file + ", pro_thumbnail=" + pro_thumbnail + ", pro_writer=" + pro_writer + ", pro_view="
 				+ pro_view + ", pro_progress=" + pro_progress + ", pro_open=" + pro_open + ", pro_limit=" + pro_limit
-				+ ", file1=" + file1 + "]";
+				+ ", file1=" + file1 + ", total_reward=" + total_reward + "]";
 	}
 	
 	

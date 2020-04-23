@@ -16,6 +16,7 @@ public interface Reward_infoDAO {
 	public void images(Reward_infoDTO dto);
 	public void viewUp(int rno) throws Exception;
 	public void pro_like(int rno);
+	public void reward_infoUpdate(Reward_infoDTO dto3);
 
 	
  

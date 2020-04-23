@@ -111,6 +111,26 @@ function execPostCode() {
 	
 }) */
 
+function checkboxArr() {
+    var checkArr = [];     // 배열 초기화
+    $("input[name='r_id']:checked").each(function(i)) {
+        checkArr.push($(this).val());     // 체크된 것만 값을 뽑아서 배열에 push
+    }
+ 
+    $.ajax({
+        url: 'r_id'
+        , type: 'post'
+        , dataType: 'text'
+        , data: {
+            valueArrTest: checkArr
+        }
+    });
+}
+
+
+
+
+
 function add () {
 	var hm = document.form.item_amount;
 	var price_unit=document.form.price_unit.value;
@@ -129,7 +149,7 @@ function del () {
 	var delivery_fee=document.form.delivery_fee.value;
 	var total_reward = document.form.total_reward;
 	var total_money=document.form.total_money;
-		if (hm.value > 1) {
+		if (hm.value > 0) {
 			hm.value -- ;
 			total_reward.value = eval(hm.value) * eval(price_unit);
 			total_money.value= eval(hm.value) * eval(price_unit) + eval(delivery_fee);
@@ -159,7 +179,7 @@ function del () {
 		</tr>
               <c:forEach var="var" items="${pay_view}">
 		<tr>    
-		        <td><input type="text" name="rno" value="${var.rno}"><input type="text" name="reward_name" value="${reward_name.reward_name}"><input type="text" name="company_name" value="${reward_name.company_name}"><input type="text" name="r_id" value="${var.r_id}"></td>	 	           	
+		        <td><input type="checkbox" name="r_id"><input type="hidden" name="rno" value="${var.rno}"><input type="hidden" name="reward_name" value="${reward_name.reward_name}"><input type="hidden" name="company_name" value="${reward_name.company_name}"><input type="hidden" name="r_id" value="${var.r_id}"></td>	 	           	
 				<td>${var.r_id}</td>
 				<td><input type="text" name="item_name" value="${var.item_name}" readonly></td>
 				<td><input type="text" name="price_unit" value="${var.price_unit}" readonly>원</td>
@@ -175,7 +195,7 @@ function del () {
                     <input type="button" value=" + " onclick="add()"></td>
 				<td><input type="text" name="total_reward" value="0"/>원</td>
 				<td><input type="text" name="total_money" value="0"/></td>
-				<td><input type="text" name="userid" value="${user_info.userid}" /><input type="text" name="name" value="${user_info.name}" /><input type="text" name="uno" value="${user_info.uno}" /></td>	  
+				<td><input type="hidden" name="userid" value="${user_info.userid}" /><input type="hidden" name="name" value="${user_info.name}" /><input type="hidden" name="uno" value="${user_info.uno}" /></td>	  
 		</tr>
  			</c:forEach>
 		 <tr align="center"><th colspan="12">배송지 주소</th><th></th></tr>
@@ -194,5 +214,6 @@ function del () {
 	<tr><td colspan="12" align="center"><button type="submit">구매하기</button></td></tr>
 	</table>
 	</form>
+	
 </body>
 </html>

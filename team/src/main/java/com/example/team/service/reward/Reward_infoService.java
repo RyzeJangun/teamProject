@@ -18,6 +18,7 @@ public interface Reward_infoService {
 	public void images(Reward_infoDTO dto);
 	public void viewUp(int rno, HttpSession session) throws Exception;//조회수 증가
 	public void pro_like(int rno,HttpSession session);//좋아용
+	public void reward_infoUpdate(Reward_infoDTO dto3);
 	
 			
 }

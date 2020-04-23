@@ -53,6 +53,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values
 		(#{uno},#{rno},#{userid},#{name},#{reward_name},#{company_name},#{r_id},#{item_name},#{price_unit},#{item_option},#{delivery_fee},#{item_amount},#{total_reward},#{total_money},#{dc_ratio},#{delivery_date},#{delivery_postcode},#{delivery_road},#{delivery_detail})
 	</insert>
+	
+	<!-- 프로젝트 리워드 정보 갱신 -->
+	<update id="reward_infoUpdate">
+	 update reward_info set reward_investor=reward_investor+1,reward_now=reward_now+#{total_reward},reward_ratio=((reward_now+#{total_reward})/reward_max)*100 where rno=#{rno}
+	</update>
 
 	<!-- 리워드 프로젝트 -->
 

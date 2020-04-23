@@ -9,6 +9,7 @@ public class Item_stepDTO {
 	private int price_unit;//리워드 하나 가격
 	private String item_option;//아이템 옵션
 	private int rest_amount;//남은 수량
+	private int item_amount;//소진수량
 	private int delivery_fee;//배송비
 	private Date delivery_date;//리워드 발송 시작일
 	private int dc_ratio;//리워드 단계별 할인률/혜택률 --ex)1단계:10% 2단계:15%원 3단계:20%
@@ -76,12 +77,19 @@ public class Item_stepDTO {
 		this.step_investor = step_investor;
 	}
 	
+	public int getItem_amount() {
+		return item_amount;
+	}
+	public void setItem_amount(int item_amount) {
+		this.item_amount = item_amount;
+	}
+	
 	@Override
 	public String toString() {
 		return "Item_stepDTO [rno=" + rno + ", r_id=" + r_id + ", price_unit=" + price_unit + ", item_option="
-				+ item_option + ", rest_amount=" + rest_amount + ", delivery_fee=" + delivery_fee + ", delivery_date="
-				+ delivery_date + ", dc_ratio=" + dc_ratio + ", item_name=" + item_name + ", step_investor="
-				+ step_investor + "]";
+				+ item_option + ", rest_amount=" + rest_amount + ", item_amount=" + item_amount + ", delivery_fee="
+				+ delivery_fee + ", delivery_date=" + delivery_date + ", dc_ratio=" + dc_ratio + ", item_name="
+				+ item_name + ", step_investor=" + step_investor + "]";
 	}
 	
 	

@@ -59,6 +59,10 @@ public class Reward_infoDAOImpl implements Reward_infoDAO {
 		sqlSession.insert("images.imagesInsert",dto);
 	}
 	
+	@Override
+	public void reward_infoUpdate(Reward_infoDTO dto3) {
+		sqlSession.update("reward_info.reward_infoUpdate", dto3);
+	}
 	
 
 }

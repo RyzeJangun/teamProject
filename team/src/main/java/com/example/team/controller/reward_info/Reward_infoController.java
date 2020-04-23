@@ -2,7 +2,7 @@ package com.example.team.controller.reward_info;
 
 
 import java.io.File;
-import java.lang.ProcessBuilder.Redirect;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -15,13 +15,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.team.model.member.dto.MemberDTO;
 import com.example.team.model.reward_info.dto.Item_stepDTO;
 import com.example.team.model.reward_info.dto.Reward_infoDTO;
 import com.example.team.model.reward_info.dto.User_rewardDTO;
-import com.example.team.model.reward_info.dto.User_rewardListDTO;
+
 import com.example.team.service.member.MemberService;
 import com.example.team.service.reward.Item_stepService;
 import com.example.team.service.reward.Reward_infoService;
@@ -128,20 +130,24 @@ public class Reward_infoController {
 
 	//리워드 투자하기
 	@RequestMapping("reward_payment.do")
-	public String pay(User_rewardDTO dto,Item_stepDTO dto2,HttpSession session){	
-		String userid=(String)session.getAttribute("userid");		
-		dto.setUserid(userid);	
-		reward_infoService.pay(dto,session);	
-		item_stepService.amountUpdate(dto2);
+	public String pay(User_rewardDTO dto,Item_stepDTO dto2,Reward_infoDTO dto3,HttpSession session){	
+		String userid=(String)session.getAttribute("userid");	
+		dto.setUserid(userid);
+		reward_infoService.pay(dto,session);
+		reward_infoService.reward_infoUpdate(dto3);
+		item_stepService.amountUpdate(dto2);		
 		return "redirect:/reward_info/reward_infoList.do";
 	}
+	
+		
+	
 
 	//본인이 한 리워드 투자 목록
 	@RequestMapping("user_reward.do")
 	public ModelAndView user_reward(HttpSession session) {
 		String userid=(String)session.getAttribute("userid");
 		User_rewardDTO dto=reward_infoService.user_rewardList(userid);
-		ModelAndView mav =new ModelAndView();		
+		ModelAndView mav = new ModelAndView();		
 		mav.setViewName("pay_info/user_reward");
 		mav.addObject("pay_reward",dto);
 		return mav;
